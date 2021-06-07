@@ -59,8 +59,7 @@ class ImageModules {
             single<IImageManager> {
                  ImageManager(
                     get<IBaseNetworkManager>().buildRetrofit()
-                        .create(ImageApi.HomePageApi::class.java),
-                    get()
+                        .create(ImageApi.HomePageApi::class.java)
                 )
             }
 
