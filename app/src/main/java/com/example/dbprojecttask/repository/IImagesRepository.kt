@@ -6,7 +6,7 @@ import io.reactivex.Observable
 
 interface IImagesRepository {
 
-    fun getImages(): Observable<List<ImageData>>?
+    fun getImages(): Completable?
     fun initImages(): Observable<List<ImageData>>?
     fun addImages(imageDataList: List<ImageData>?): Completable?
 }

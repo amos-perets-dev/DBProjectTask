@@ -12,12 +12,14 @@ class ImagesRepository(private val imagesDao: ImagesDao?, private val imageManag
     IImagesRepository {
 
 
-
-    override fun getImages(): Observable<List<ImageData>>? {
+    override fun getImages(): Completable? {
         return imageManager
             .fetchDataFromServer()
             ?.onErrorReturn {
                 imagesDao?.getAllImages()
+            }
+            ?.flatMapCompletable {
+                addImages(it)
             }
     }
 

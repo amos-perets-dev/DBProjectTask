@@ -25,14 +25,4 @@ abstract class AppDatabase : RoomDatabase(){
 
     }
 
-//    override fun getDatabase(context: Context): AppDatabase {
-//            return Room.databaseBuilder(
-//                context.applicationContext,
-//                AppDatabase::class.java,
-//                DATABASE
-//            )
-//                .fallbackToDestructiveMigration()
-//                .build()
-//    }
-
 }

@@ -10,7 +10,7 @@ import com.example.dbprojecttask.repository.IImagesRepository
 import io.reactivex.schedulers.Schedulers
 
 class HomePageViewModel(
-    private val imagesRepository: IImagesRepository,
+    imagesRepository: IImagesRepository,
     private val configuration: IImageConfiguration
 ) : ViewModelBase() {
 
@@ -21,25 +21,14 @@ class HomePageViewModel(
         imagesRepository
             .initImages()
             ?.subscribeOn(Schedulers.io())
-            ?.doOnNext { list ->
-                notifyData(list)
-            }
+            ?.doOnNext(this::notifyData)
             ?.subscribe({}, Throwable::printStackTrace)?.let {
                 compositeDisposable.add(
                     it
                 )
             }
 
-    }
-
-    fun getImages() {
         imagesRepository.getImages()
-            ?.doOnNext { list ->
-                notifyData(list)
-            }
-            ?.flatMapCompletable {
-                imagesRepository.addImages(it)
-            }
             ?.subscribe({}, Throwable::printStackTrace)?.let {
                 compositeDisposable.add(
                     it
@@ -57,7 +46,6 @@ class HomePageViewModel(
             imageData.comments ?: 0 > configuration.getMinimumComments()
                     && imageData.likes ?: 0 > configuration.getMinimumLikes()
         }.map { imageData ->
-            Log.d("TEST_GAME", "imageData.imageUrl: ${imageData.imageUrl}")
             ImageDataItem(
                 imageData.id ?: 0,
                 imageData.imageUrl,

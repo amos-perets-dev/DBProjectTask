@@ -26,9 +26,8 @@ class HomePageFragment : FragmentBase<HomePageViewModel>() {
         super.onViewCreated(view, savedInstanceState)
         val imagesItems = view.images_items
         imagesItems.adapter = imagesAdapter
-        baseViewModel?.getImages()
+
         baseViewModel?.images?.observe(viewLifecycleOwner, Observer {
-            Log.d("TEST_GAME", "it:$it")
             imagesAdapter.submitList(it)
             loader.visibility = View.INVISIBLE
         })
