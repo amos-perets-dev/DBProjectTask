@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">DBProjectTask</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="home_page_fragment_label">Home Page Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="internet_error_text">Internet is unavailable. please check the internet access and try again later</string>
+    <string name="general_error_text">Oops…something went wrong please try later</string>
+
+    <string name="home_page_image_comments_title">Comments: %1$s</string>
+    <string name="home_page_image_likes_title">Likes: %1$s</string>
+
+</resources>
